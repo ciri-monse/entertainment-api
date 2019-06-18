@@ -13,14 +13,14 @@ app.get('/pingpong/status', (req, res) =>
     var tableSvc = azure.createTableService(storageAccountName, primaryKey);
     
     var query = new azure.TableQuery()
-        .top(5)
         .where('PartitionKey eq ?', 'raspiMaru');
 
     tableSvc.queryEntities('EventsLog', query, null, function(error, result, response){
         let isAvailable = true;
         if(!error){
             const values = response.body.value;
-            values.forEach(element => {
+            const latestValues = values.slice(-5);
+            latestValues.forEach(element => {
                 if (element.Activity == 1){
                     isAvailable = false;
                 }
