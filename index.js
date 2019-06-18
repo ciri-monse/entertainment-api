@@ -19,7 +19,7 @@ app.get('/pingpong/status', (req, res) =>
         let isAvailable = true;
         if(!error){
             const values = response.body.value;
-            const latestValues = values.slice(-5);
+            const latestValues = values.slice(-10);
             latestValues.forEach(element => {
                 if (element.Activity == 1){
                     isAvailable = false;
