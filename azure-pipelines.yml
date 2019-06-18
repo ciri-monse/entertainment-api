@@ -77,6 +77,6 @@ stages:
               azureSubscription: $(azureSubscription)
               appType: webAppLinux
               appName: $(webAppName)
-              runtimeStack: 'NODE|10.10'
+              runtimeStack: 'NODE|8.12'
               package: $(System.ArtifactsDirectory)/drop/$(Build.BuildId).zip
               startUpCommand: 'node index.js'
